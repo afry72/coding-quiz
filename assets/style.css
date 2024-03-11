@@ -1,0 +1,10 @@
+:root {
+    --blackbody: #1c1c1c;
+    --blacktrim: #040404;
+    --cyan: #00999c;
+    --text: #ffffff;
+}
+
+* {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}

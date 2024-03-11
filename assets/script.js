@@ -41,14 +41,15 @@ var questions = [
 
 ];
 
+
+
 //timer score event listener high score
 //event listener
 function startGame () {
     //hide start button
-    //generate questions
-    //generate answers
     generateQuestions ();
     //start timer
+    hideButton ();
 
 }
 
@@ -56,6 +57,11 @@ function nextQuestion (event) {
     var clickedAnswer = event.target;
     console.log(clickedAnswer);
     //check to see if answer is right
+    if (clickedAnswer == correctAnswer) {
+        score++;
+    } else {
+    }
+    console.log(score)
     //update score function
     currentIndex++;
     if (time > 0){
@@ -67,6 +73,7 @@ function nextQuestion (event) {
 
 function endGame () {
     //when game is over calculate score and save to local storage
+    //hide question and start button
 }
 
 function generateQuestions () {
@@ -86,5 +93,6 @@ function generateQuestions () {
 
     }
 }
+
 
 startButton.onclick = startGame;

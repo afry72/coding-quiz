@@ -1,41 +1,42 @@
 //var for dom elements
-var startButton = document.getElementById("start")
-var timer = document.getElementById("timer")
-var quiz = document.getElementById("questions")
-var head = document.getElementById("head")
-var answer = document.getElementById("answer")
-var currentIndex = 0
+var startButton = document.getElementById("start");
+var timer = document.getElementById("timer");
+var quiz = document.getElementById("questions");
+var head = document.getElementById("head");
+var answer = document.getElementById("answer");
+var currentScore = document.getElementById("score");
+var currentIndex = 0;
 
 // timer var
 // score variable
-var score = 0
-var time = 300
+var score = 0;
+var time = 300;
 
 var questions = [
     {
-        header: "what is todays date",
-        answers: ["a","b","c","d"],
-        correctAnswer: "c",
+        header: "Test 1",
+        answers: ["A)","B)","C)","D)"],
+        correctAnswer: "C)",
     },
     {
-        header: "what is todays date2",
-        answers: ["a","b","c","d"],
-        correctAnswer: "c",
+        header: "Test 2",
+        answers: ["A)","B)","C)","D)"],
+        correctAnswer: "a",
     },
     {
-        header: "what is todays dat3e",
-        answers: ["a","b","c","d"],
-        correctAnswer: "c",
+        header: "Test 3",
+        answers: ["A)","B)","C)","D)"],
+        correctAnswer: "d",
     },
     {
-        header: "what is todays dat4e",
-        answers: ["a","b","c","d"],
-        correctAnswer: "c",
+        header: "Test 4",
+        answers: ["A)","B)","C)","D)"],
+        correctAnswer: "b",
     },
     {
-        header: "what is todays dat5e",
-        answers: ["a","b","c","d"],
-        correctAnswer: "c",
+        header: "Test 5",
+        answers: ["A)","B)","C)","D)"],
+        correctAnswer: "a",
     },
 
 
@@ -49,19 +50,32 @@ function startGame () {
     //hide start button
     generateQuestions ();
     //start timer
-    hideButton ();
+    //hideButton ();
+    startButton.setAttribute("class", "hide");
 
 }
 
 function nextQuestion (event) {
-    var clickedAnswer = event.target;
-    console.log(clickedAnswer);
+    var clickedAnswer = event.target.textContent;
+    console.log("click", clickedAnswer);
+
     //check to see if answer is right
-    if (clickedAnswer == correctAnswer) {
-        score++;
-    } else {
+    var rightAnswer = questions[currentIndex].correctAnswer;
+    console.log("right", rightAnswer);
+    for (var i=0; i<rightAnswer.length; i++) {
+        //var answerCheck = 
     }
+
+    if (clickedAnswer == rightAnswer) {
+       score++;
+       currentScore.textContent = score;
+    } else {
+        time = time-50;
+        timer.textContent = time;
+    }
+
     console.log(score)
+
     //update score function
     currentIndex++;
     if (time > 0){
@@ -78,10 +92,11 @@ function endGame () {
 
 function generateQuestions () {
     var displayedQuestion = questions[currentIndex];
-    console.log(displayedQuestion);
-    console.log(head);
+
     answer.innerHTML = "";
+
     head.textContent = displayedQuestion.header;
+
     var displayedQuestionAnswers = displayedQuestion.answers;
     for (var i=0; i<displayedQuestionAnswers.length; i++) {
         var current = displayedQuestionAnswers[i];

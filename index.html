@@ -9,20 +9,35 @@
 
 <div class="header"> <h1> JAVASCRIPT CODING QUIZ </h1> </div>
 <body>
-    <div>
+    <div id="timeHeader">
         <h2>Time</h2>
-    <div id="timer"></div>
+        <div id="timer"></div>
     </div>
 
-    <div>
+    <div id="scoreHeader">
         <h2>Score</h2>
-    <div id="score"></div>
+        <div id="score"></div>
     </div>
 
     <div id="questions">
         <h1 id="head"></h1>
         <div id="answer"></div>
 
+    </div>
+
+    <div class="hide" id="endScreen">
+        <h3>Good Job!</h3>
+        <p>your final score is<div id="finalScore"></div></p>
+        <form onsubmit="return false" id="initialsBox">
+            <input type="text" id="initialsText" placeholder="Please enter your initials" />
+            <button id="submitButton">submit</button>
+        </form>
+    </div>
+
+    <div id="startParagraph">
+        <h3>Try to answer the following questions within the time limit.</h3>
+        <h3>Every incorrect answer will take 10 seconds off of your time.</h3>
+        <h3>Good Luck!</h3>
     </div>
     <button id="start">Start Quiz</button>
 

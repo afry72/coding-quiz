@@ -13,10 +13,11 @@
 
 }
 
-#start {
+#start  {
     color: var(--text);
     background-color: var(--trim);
 }
+
 
 .hide {
     display: none;

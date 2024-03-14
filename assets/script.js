@@ -5,45 +5,50 @@ var quiz = document.getElementById("questions");
 var head = document.getElementById("head");
 var answer = document.getElementById("answer");
 var currentScore = document.getElementById("score");
+var timeHeader = document.getElementById("timeHeader");
+var scoreHeader = document.getElementById("scoreHeader");
+var startParagraph = document.getElementById("startParagraph");
 var currentIndex = 0;
 var recentScore = 0;
+
+var gameEndScreen = document.getElementById("endScreen");
+var finalScore = document.getElementById("finalScore");
+var submit = document.getElementById("submitButton");
 
 // timer var
 // score variable
 var score = 0;
-var time = 30;
+var time = 75;
 
 var questions = [
     {
-        header: "Test 1",
-        answers: ["A)","B)","C)","D)"],
-        correctAnswer: "C)",
+        header: "Commonly used date types DO NOT include:",
+        answers: ["A) Strings","B) Booleans","C) Alerts","D) Numbers"],
+        correctAnswer: "C) Alerts",
     },
     {
-        header: "Test 2",
-        answers: ["A)","B)","C)","D)"],
-        correctAnswer: "a",
+        header: "The condition in an if / else statement is enclosed within",
+        answers: ["A) Quotes","B) Curly Backets","C) Parentheses","D) Square Brackets"],
+        correctAnswer: "C) Parentheses",
     },
     {
-        header: "Test 3",
-        answers: ["A)","B)","C)","D)"],
-        correctAnswer: "d",
+        header: "Arrays in javascript can be used to store",
+        answers: ["A) Numbers and Strings","B) Other arrays","C) Booleans","D) All of the above"],
+        correctAnswer: "D) All of the above",
     },
     {
-        header: "Test 4",
-        answers: ["A)","B)","C)","D)"],
-        correctAnswer: "b",
+        header: "String values must be enclosed within what when being assigned to variables",
+        answers: ["A) Commas","B) Curly Brackets","C) Quotes","D) Parentheses"],
+        correctAnswer: "C) Quotes",
     },
     {
-        header: "Test 5",
-        answers: ["A)","B)","C)","D)"],
-        correctAnswer: "a",
+        header: "A very useful tool for development and debugging for printing content to the debugger is",
+        answers: ["A) JavaScript","B) Terminal/Bash","C) For loops","D) Console Log"],
+        correctAnswer: "D) Console Log",
     },
 
 
 ];
-
-//setInterval(gameTime, 3000);
 
 function gameTime () {
     var refreshTimer = setInterval(timeIndex, 1000);
@@ -53,16 +58,11 @@ function gameTime () {
         timer.textContent = time;
         console.log(time);
         if (time <= 0) {
-            // clearInterval(timeIndex)
             endGame ();
             console.log("end of game");
             clearInterval(refreshTimer);
         }
     }
-
-    /*if (time <= 0) {
-        clearInterval(refreshTimer);
-    } */
 
 }
 
@@ -72,8 +72,11 @@ function startGame () {
     //hide start button
     generateQuestions ();
     //start timer
+    timer.textContent = time;
+    currentScore.textContent = score;
     //hideButton ();
     startButton.setAttribute("class", "hide");
+    startParagraph.setAttribute("class", "hide");
     gameTime ();
 
 }
@@ -90,15 +93,18 @@ function nextQuestion (event) {
     }
 
     if (clickedAnswer == rightAnswer) {
-       score++;
+       score = score+11;
        currentScore.textContent = score;
     } else {
-        time = time-5;
+        time = time-10;
         timer.textContent = time;
     }
 
     console.log(score)
 
+    if (currentIndex >= (questions.length-1)) {
+        endGame();
+    }
     //update score function
     currentIndex++;
     if (time > 0){
@@ -106,12 +112,20 @@ function nextQuestion (event) {
     } else {
         endGame();
     }
+
+
 }
 
 function endGame () {
-    startButton.removeAttribute("class", "none");
-    //when game is over calculate score and save to local storage
-    //hide question and start button
+    time = 0;
+    console.log("entered endgame")
+    timeHeader.setAttribute("class", "hide");
+    scoreHeader.setAttribute("class", "hide");
+    quiz.setAttribute("class", "hide");
+    finalScore.textContent = score;
+    gameEndScreen.removeAttribute("class", "none");
+
+    
 }
 
 function generateQuestions () {
@@ -131,7 +145,13 @@ function generateQuestions () {
         answer.appendChild(choiceButton);
 
     }
+
 }
 
 
+function sendToStorage () {
+    console.log("submitted");
+}
+
+submit.onclick = sendToStorage;
 startButton.onclick = startGame;

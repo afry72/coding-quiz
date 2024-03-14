@@ -15,6 +15,11 @@ var gameEndScreen = document.getElementById("endScreen");
 var finalScore = document.getElementById("finalScore");
 var submit = document.getElementById("submitButton");
 
+var highScoreScreen = document.getElementById("highScoreScreen");
+var scoreList = document.getElementById("scoreList");
+var clearScore = document.getElementById("clearScore");
+var resetQuiz = document.getElementById("reset");
+
 // timer var
 // score variable
 var score = 0;
@@ -77,6 +82,8 @@ function startGame () {
     //hideButton ();
     startButton.setAttribute("class", "hide");
     startParagraph.setAttribute("class", "hide");
+    timeHeader.removeAttribute("class", "none");
+    scoreHeader.removeAttribute("class", "none");
     gameTime ();
 
 }
@@ -151,7 +158,19 @@ function generateQuestions () {
 
 function sendToStorage () {
     console.log("submitted");
+    gameEndScreen.setAttribute("class", "hide")
+    highScoreScreen.removeAttribute("class", "none")
 }
 
+function refreshQuiz () {
+    console.log("refresh quiz")
+}
+
+function refreshScore () {
+    console.log("refreshScore")
+}
+
+clearScore.onclick = refreshScore;
+resetQuiz.onclick = refreshQuiz;
 submit.onclick = sendToStorage;
 startButton.onclick = startGame;

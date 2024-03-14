@@ -9,12 +9,12 @@
 
 <div class="header"> <h1> JAVASCRIPT CODING QUIZ </h1> </div>
 <body>
-    <div id="timeHeader">
+    <div class="hide" id="timeHeader">
         <h2>Time</h2>
         <div id="timer"></div>
     </div>
 
-    <div id="scoreHeader">
+    <div class="hide" id="scoreHeader">
         <h2>Score</h2>
         <div id="score"></div>
     </div>
@@ -39,7 +39,15 @@
         <h3>Every incorrect answer will take 10 seconds off of your time.</h3>
         <h3>Good Luck!</h3>
     </div>
+
     <button id="start">Start Quiz</button>
+
+    <div class="hide" id="highScoreScreen"> 
+        <h1>High Scores</h1>
+        <div id="scoreList"></div>
+        <button id="reset">Try Again</button>
+        <button id="clearScore">Clear High Score</button>
+    </div>
 
     <script src="./assets/script.js"></script>
 

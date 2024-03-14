@@ -6,11 +6,12 @@ var head = document.getElementById("head");
 var answer = document.getElementById("answer");
 var currentScore = document.getElementById("score");
 var currentIndex = 0;
+var recentScore = 0;
 
 // timer var
 // score variable
 var score = 0;
-var time = 300;
+var time = 30;
 
 var questions = [
     {
@@ -42,7 +43,28 @@ var questions = [
 
 ];
 
+//setInterval(gameTime, 3000);
 
+function gameTime () {
+    var refreshTimer = setInterval(timeIndex, 1000);
+
+    function timeIndex () {
+        time = time -1;
+        timer.textContent = time;
+        console.log(time);
+        if (time <= 0) {
+            // clearInterval(timeIndex)
+            endGame ();
+            console.log("end of game");
+            clearInterval(refreshTimer);
+        }
+    }
+
+    /*if (time <= 0) {
+        clearInterval(refreshTimer);
+    } */
+
+}
 
 //timer score event listener high score
 //event listener
@@ -52,6 +74,7 @@ function startGame () {
     //start timer
     //hideButton ();
     startButton.setAttribute("class", "hide");
+    gameTime ();
 
 }
 
@@ -70,7 +93,7 @@ function nextQuestion (event) {
        score++;
        currentScore.textContent = score;
     } else {
-        time = time-50;
+        time = time-5;
         timer.textContent = time;
     }
 
@@ -86,6 +109,7 @@ function nextQuestion (event) {
 }
 
 function endGame () {
+    startButton.removeAttribute("class", "none");
     //when game is over calculate score and save to local storage
     //hide question and start button
 }

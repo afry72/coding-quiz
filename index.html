@@ -29,7 +29,7 @@
         <h3>Good Job!</h3>
         <p>your final score is<div id="finalScore"></div></p>
         <form onsubmit="return false" id="initialsBox">
-            <input type="text" id="initialsText" placeholder="Please enter your initials" />
+            <input type="text" maxlength="2" id="initialsText" placeholder="Please enter your initials" />
             <button id="submitButton">submit</button>
         </form>
     </div>
@@ -43,14 +43,18 @@
     <button id="start">Start Quiz</button>
 
     <div class="hide" id="highScoreScreen"> 
-        <h1>High Scores</h1>
+        <h1>High Score</h1>
         <div id="scoreList"></div>
-        <button id="resetQuiz">Try Again</button>
+
+        <form>
+            <button id="resetQuiz">Try Again</button>
+        </form>
+        
         <button id="clearScore">Clear High Score</button>
     </div>
 
     <script src="./assets/script.js"></script>
-
+    
 </body>
 
 </html>

@@ -5,7 +5,13 @@
 }
 
 * {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+    
+}
+
+body {
+    text-align: center;
 }
 
 .header {
@@ -23,3 +29,22 @@
     display: none;
 }
 
+#resetQuiz {
+    background-color: var(--trim);
+    color: var(--text);
+    margin: 5px;
+}
+
+#clearScore {
+    background-color: var(--trim);
+    color: var(--text);
+}
+
+#scoreList {
+    color: var(--trim);
+    font-weight: bolder;
+}
+
+footer {
+    min-height:100vh; display:flex; flex-direction:column; justify-content:space-between;
+}
